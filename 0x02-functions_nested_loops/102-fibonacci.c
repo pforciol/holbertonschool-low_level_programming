@@ -8,12 +8,12 @@
 
 int	main(void)
 {
-	unsigned long n_minus1 = 1;
-	unsigned long n_minus2 = 0;
+	unsigned long n_minus1 = 2;
+	unsigned long n_minus2 = 1;
 	unsigned long n = 0;
 	int i = 0;
 
-	printf("0, 1");
+	printf("%lu, %lu", n_minus2, n_minus1);
 	while (i < 48)
 	{
 		printf(", ");
