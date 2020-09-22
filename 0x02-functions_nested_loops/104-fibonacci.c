@@ -21,11 +21,10 @@ int	main(void)
 	printf("%lu, %lu", n_minus2, n_minus1);
 	while (i < 90) /* 92 - 2 because I hardcode the first 2 values */
 	{
-		printf(", ");
 		n = n_minus1 + n_minus2;
 		n_minus2 = n_minus1;
 		n_minus1 = n;
-		printf("%lu", n);
+		printf(", %lu", n);
 		i++;
 	} /* This code is the same as 102-fibonacci.c */
 
@@ -34,7 +33,7 @@ int	main(void)
 	n_m2h1 = n_minus2 / 1000000000; /* Get the left part of n_minus2 */
 	n_m2h2 = n_minus2 % 1000000000; /* Get the right part of n_minus2 */
 
-	while (i++ < 96) /* Same as up, 98 - 2 for the two hardoded first values */
+	while (i < 96) /* Same as up, 98 - 2 for the two hardoded first values */
 	{
 		n_h1 = n_m1h1 + n_m2h1;
 		n_h2 = n_m1h2 + n_m2h2;
@@ -47,10 +46,11 @@ int	main(void)
 
 		printf(", %lu%lu", n_h1, n_h2);
 
-		n_m2h1 = n_m1h1;
+		n_m2h1 = n_m1h1; /* The same as up, but in two parts each time */
 		n_m2h2 = n_m1h2;
 		n_m1h1 = n_h1;
 		n_m1h2 = n_h2;
+		i++;
 	}
 	printf("\n");
 	return (0);
