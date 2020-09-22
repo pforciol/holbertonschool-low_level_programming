@@ -34,9 +34,8 @@ int	main(void)
 	n_m2h1 = n_minus2 / 1000000000; /* Get the left part of n_minus2 */
 	n_m2h2 = n_minus2 % 1000000000; /* Get the right part of n_minus2 */
 
-	while (i < 96) /* Same as up, 98 - 2 for the two hardoded first values */
+	while (i++ < 96) /* Same as up, 98 - 2 for the two hardoded first values */
 	{
-		printf(", ");
 		n_h1 = n_m1h1 + n_m2h1;
 		n_h2 = n_m1h2 + n_m2h2;
 
@@ -46,13 +45,12 @@ int	main(void)
 			n_h2 %= 1000000000; /* and only get the wanted digits */
 		}
 
-		printf("%lu%lu", n_h1, n_h2);
+		printf(", %lu%lu", n_h1, n_h2);
 
 		n_m2h1 = n_m1h1;
 		n_m2h2 = n_m1h2;
 		n_m1h1 = n_h1;
 		n_m1h2 = n_h2;
-		i++;
 	}
 	printf("\n");
 	return (0);
