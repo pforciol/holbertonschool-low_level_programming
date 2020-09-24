@@ -13,5 +13,6 @@ void	print_diagonal(int);
 void	print_square(int);
 void	print_triangle(int);
 void	print_number(int);
+int		_abs(int);
 
 #endif
