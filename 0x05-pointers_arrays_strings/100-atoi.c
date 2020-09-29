@@ -32,23 +32,22 @@ int	_atoi(char *s)
  * @s: the original string
  * @begin: begin index
  * @end: end index
+ * @sign: the sign of the int
  *
  * Return: the unsigned int
  */
 
 int	_atoi_conv(char *s, int begin, int end, int sign)
 {
-	int	pow = 1;
 	int	res = 0;
 
-	while (end >= begin)
+	while (begin <= end)
 	{
 		if (sign > 0)
-			res += (s[end] - '0') * pow;
+			res = res * 10 + (s[begin] - '0');
 		else
-			res -= (s[end] - '0') * pow;
-		pow *= 10;
-		end--;
+			res = res * 10 - (s[begin] - '0');
+		begin++;
 	}
 	return (res);
 }
