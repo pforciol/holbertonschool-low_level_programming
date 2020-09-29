@@ -24,7 +24,7 @@ int	_atoi(char *s)
 	while (s[i] && ((s[i] >= '0') && (s[i] <= '9')))
 		i++;
 	end = i - 1;
-	return (_atoi_conv(s, begin, end) * sign);
+	return (_atoi_conv(s, begin, end, sign));
 }
 
 /**
@@ -36,14 +36,17 @@ int	_atoi(char *s)
  * Return: the unsigned int
  */
 
-int	_atoi_conv(char *s, int begin, int end)
+int	_atoi_conv(char *s, int begin, int end, int sign)
 {
 	int	pow = 1;
 	int	res = 0;
 
 	while (end >= begin)
 	{
-		res += (s[end] - '0') * pow;
+		if (sign > 0)
+			res += (s[end] - '0') * pow;
+		else
+			res -= (s[end] - '0') * pow;
 		pow *= 10;
 		end--;
 	}

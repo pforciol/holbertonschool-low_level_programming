@@ -15,6 +15,6 @@ void	puts_half(char *);
 void	print_array(int *, int);
 char	*_strcpy(char *, char *);
 int		_atoi(char *);
-int		_atoi_conv(char *, int, int);
+int		_atoi_conv(char *, int, int, int);
 
 #endif
