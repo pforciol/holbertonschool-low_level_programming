@@ -8,8 +8,8 @@
 int		issep(char c)
 {
 	int i = 0;
-
 	char seps[14] = " \t\n,;.!?\"(){}";
+
 	while (c != seps[i])
 		i++;
 	return ((i <= 12));
