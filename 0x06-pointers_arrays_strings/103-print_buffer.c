@@ -48,9 +48,12 @@ void	print_buffer(char *b, int size)
 {
 	int i = 0;
 
-	while (i < size)
-	{
-		print_line(b, i, size);
-		i += 10;
-	}
+	if (size <= 0)
+		printf("\n");
+	else
+		while (i < size)
+		{
+			print_line(b, i, size);
+			i += 10;
+		}
 }
