@@ -13,7 +13,7 @@ char	*_strchr(char *s, char c)
 {
 	unsigned int	i = 0;
 
-	while (s[i] != c && s[i++])
-		;
-	return (s[i] ? s + i : NULL);
+	while (s[i] != c && s[i])
+		i++;
+	return (s[i] ? s + (i - 1) : NULL);
 }
