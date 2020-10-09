@@ -11,3 +11,4 @@ List of the Projects:
 * [0x07. C - Even more pointers, arrays and strings](https://github.com/pforciol/holbertonschool-low_level_programming/tree/master/0x07-pointers_arrays_strings)
 * [0x08. C - Recursion](https://github.com/pforciol/holbertonschool-low_level_programming/tree/master/0x08-recursion)
 * [0x09. C - Static libraries](https://github.com/pforciol/holbertonschool-low_level_programming/tree/master/0x09-static_libraries)
+* [0x0A. C - argc, argv](https://github.com/pforciol/holbertonschool-low_level_programming/tree/master/0x0A-argc_argv)
