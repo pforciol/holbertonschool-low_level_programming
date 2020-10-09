@@ -6,7 +6,7 @@
  * @argc: length of argv table
  * @argv: table containing program name and argments
  *
- * Return: always 0 (Success)
+ * Return: 0 if success, 1 if error
  */
 
 int		main(int argc, char **argv)
