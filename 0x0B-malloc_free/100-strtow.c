@@ -47,6 +47,22 @@ int		count_words(char *str)
 }
 
 /**
+ * exit_free - frees the 2D word arrays in case of a malloc error
+ *
+ * @words: the 2D array of words
+ * @nb: the number of words to free
+ */
+
+void	exit_free(char **words, int nb)
+{
+	int i = 0;
+
+	while (i < nb)
+		free(words[i++]);
+	free(words);
+}
+
+/**
  * strtow - splits a string into words
  *
  * @str: the string to separate
@@ -74,7 +90,10 @@ char	**strtow(char *str)
 		{
 			words[j] = malloc(sizeof(char) * (wordlen(str + i) + 1));
 			if (!words[j])
+			{
+				exit_free(words, j);
 				return (NULL);
+			}
 			k = 0;
 			while (str[i] && str[i] != ' ')
 				words[j][k++] = str[i++];
