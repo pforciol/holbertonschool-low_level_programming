@@ -1,5 +1,14 @@
 #include "holberton.h"
 
+void	exit_free(int **array, int nb)
+{
+	int	i = 0;
+
+	while (i < nb)
+		free(array[i++]);
+	free(array);
+}
+
 /**
  * alloc_grid - allocates a 2 dimensional array of integers
  *
@@ -25,7 +34,7 @@ int		**alloc_grid(int width, int height)
 		j = 0;
 		array[i] = malloc(sizeof(int) * width);
 		if (!array[i])
-			return (0);
+			exit_free(array, i);
 		while (j < width)
 			array[i][j++] = 0;
 		i++;
