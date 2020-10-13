@@ -1,5 +1,12 @@
 #include "holberton.h"
 
+/**
+ * exit_free - frees the whole array in case of a malloc error
+ *
+ * @array: the 2D array to free
+ * @nb: the number of int arrays inside array to free
+ */
+
 void	exit_free(int **array, int nb)
 {
 	int	i = 0;
