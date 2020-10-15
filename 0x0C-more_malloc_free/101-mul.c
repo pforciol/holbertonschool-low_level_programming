@@ -47,6 +47,26 @@ int		check_digits_len(char *str)
 }
 
 /**
+ * init_memory - initialise len bytes of sizeof(int) and set them to 0
+ *
+ * @len: the length of the array
+ *
+ * Return: a pointer to the allocated memory
+ */
+
+int		*init_memory(int len)
+{
+	int	*array, i = 0;
+
+	array = malloc(sizeof(int) * len);
+	if (!array)
+		exit_error();
+	while (i < len)
+		array[i++] = 0;
+	return (array);
+}
+
+/**
  * main - multiplies two positive numbers
  *
  * @argc: number of arguments
@@ -64,9 +84,7 @@ int		main(int argc, char **argv)
 		exit_error();
 	len1 = check_digits_len(argv[1]);
 	len2 = check_digits_len(argv[2]);
-	res = malloc(sizeof(int) * (len1 + len2));
-	if (!res)
-		exit_error();
+	res = init_memory(len1 + len2);
 	i1 = len1 - 1;
 	i_res1 = 0;
 	while (i1 >= 0)
