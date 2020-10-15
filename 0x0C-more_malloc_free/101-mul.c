@@ -65,7 +65,7 @@ int		main(int argc, char **argv)
 	len2 = check_digits_len(argv[2]);
 	res = malloc(sizeof(int) * (len1 + len2));
 	if (!res)
-		return (-1);
+		exit_error();
 	i1 = len1 - 1;
 	i_res1 = 0;
 	while (i1 >= 0)
