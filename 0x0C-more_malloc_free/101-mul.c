@@ -108,7 +108,7 @@ int		main(int argc, char **argv)
 		i_res1++;
 	}
 	i = i_res1 + i_res2 - 1;
-	while (res[i] == 0)
+	while (res[i] == 0 && i > 0)
 		i--;
 	while (i >= 0)
 		_putchar(res[i--] + '0');
