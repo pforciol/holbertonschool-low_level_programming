@@ -23,7 +23,7 @@ void	exit_error(void)
 	exit(98);
 }
 
-/** 
+/**
  * check_digits_len - check if string contains only digits
  *
  * @str: the string to test
@@ -56,16 +56,13 @@ int		check_digits_len(char *str)
 
 int		main(int argc, char **argv)
 {
-	int		*res;
-	int		len1, len2, i1, i2, i = 0;
+	int		*res, len1, len2, i1, i2, i = 0;
 	int		a = 0, b = 0, ret, tmp, i_res1, i_res2;
 
 	if (argc != 3)
 		exit_error();
-
 	len1 = check_digits_len(argv[1]);
 	len2 = check_digits_len(argv[2]);
-
 	res = malloc(sizeof(int) * (len1 + len2));
 	if (!res)
 		return (-1);
@@ -75,7 +72,6 @@ int		main(int argc, char **argv)
 	{
 		ret = 0;
 		a = argv[1][i1] - '0';
-
 		i2 = len2 - 1;
 		i_res2 = 0;
 		while (i2 >= 0)
@@ -92,15 +88,11 @@ int		main(int argc, char **argv)
 		i1--;
 		i_res1++;
 	}
-	i = i_res1 + i_res2;
-	res[i] = 0;
+	i = i_res1 + i_res2 - 1;
 	while (res[i] == 0)
 		i--;
 	while (i >= 0)
-	{
-		_putchar(res[i] + '0');
-		i--;
-	}
+		_putchar(res[i--] + '0');
 	_putchar('\n');
 	free(res);
 	return (0);
