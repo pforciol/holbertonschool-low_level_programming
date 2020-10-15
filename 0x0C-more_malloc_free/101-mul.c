@@ -35,13 +35,14 @@ int		check_digits_len(char *str)
 {
 	int i = 0;
 
-	while (str[i])
-	{
-		if (str[i] >= '0' && str[i] <= '9')
-			i++;
-		else
-			exit_error();
-	}
+	if (str != NULL)
+		while (str[i])
+		{
+			if (str[i] >= '0' && str[i] <= '9')
+				i++;
+			else
+				exit_error();
+		}
 	return (i);
 }
 
@@ -59,7 +60,7 @@ int		main(int argc, char **argv)
 	int		*res, len1, len2, i1, i2, i = 0;
 	int		a = 0, b = 0, ret, tmp, i_res1, i_res2;
 
-	if (argc != 3)
+	if (argc != 3 || argv[1] == NULL || argv[2] == NULL)
 		exit_error();
 	len1 = check_digits_len(argv[1]);
 	len2 = check_digits_len(argv[2]);
