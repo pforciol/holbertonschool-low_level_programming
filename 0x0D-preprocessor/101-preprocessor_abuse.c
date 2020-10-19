@@ -1,2 +1,1 @@
 #warning Hello, Holberton
-main() {}
