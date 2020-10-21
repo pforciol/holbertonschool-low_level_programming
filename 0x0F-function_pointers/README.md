@@ -16,4 +16,3 @@ List of the Projects:
 * [0x0C. C - More malloc, free](https://github.com/pforciol/holbertonschool-low_level_programming/tree/master/0x0C-more_malloc_free)
 * [0x0D. C - Processor](https://github.com/pforciol/holbertonschool-low_level_programming/tree/master/0x0D-preprocessor)
 * [0x0E. C - Structures, typedef](https://github.com/pforciol/holbertonschool-low_level_programming/tree/master/0x0E-structures_typedef)
-* [0x0F. C - Function pointers](https://github.com/pforciol/holbertonschool-low_level_programming/tree/master/0x0F-function_pointers)
