@@ -11,7 +11,7 @@
  * struct specs - structure of specifiers and their printf ones
  *
  * @spec: given specifiers
- * @pf_spec : printf corresponding specifier
+ * @func : printf corresponding function
  */
 
 typedef struct specs
