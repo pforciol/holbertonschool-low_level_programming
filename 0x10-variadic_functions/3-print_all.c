@@ -1,6 +1,55 @@
 #include "variadic_functions.h"
 
 /**
+ * print_char - prints a char
+ *
+ * @list: valist
+ */
+
+void	print_char(va_list list)
+{
+	printf("%c", va_arg(list, int));
+}
+
+/**
+ * print_int - prints an int
+ *
+ * @list: valist
+ */
+
+void	print_int(va_list list)
+{
+	printf("%d", va_arg(list, int));
+}
+
+/**
+ * print_float - prints a float
+ *
+ * @list: valist
+ */
+
+void	print_float(va_list list)
+{
+	printf("%f", va_arg(list, double));
+}
+
+/**
+ * print_string - prints a string
+ *
+ * @list: valist
+ */
+
+void	print_string(va_list list)
+{
+	char *tmp = va_arg(list, char*);
+
+	if (!tmp)
+		tmp = "(nil)";
+	printf("%s", tmp);
+}
+
+
+/**
  * print_all - prints anything
  *
  * @format: the list of types of arguments passed to the function
@@ -11,12 +60,11 @@ void	print_all(const char * const format, ...)
 	va_list		args;
 	int			i = 0, j = 0;
 	char		*sep = "";
-	void		*arg;
 	specs_t		specs[] = {
-		{"c", "%c"},
-		{"i", "%d"},
-		{"f", "%f"},
-		{"s", "%s"},
+		{"c", print_char},
+		{"i", print_int},
+		{"f", print_float},
+		{"s", print_string},
 		{NULL, NULL}
 	};
 
@@ -30,10 +78,7 @@ void	print_all(const char * const format, ...)
 			{
 				printf("%s", sep);
 				sep = ", ";
-				arg = va_arg(args, void *);
-				if (!arg && specs[j].spec[0] == 's')
-					arg = "(nil)";
-				printf(specs[j].pf_spec, arg);
+				specs[j].func(args);
 			}
 			j++;
 		}
