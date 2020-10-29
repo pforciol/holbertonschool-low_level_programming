@@ -28,9 +28,9 @@ size_t		print_list(const list_t *h)
 
 	while (h)
 	{
-			print_node(h);
-			h = h->next;
-			count++;
+		print_node(h);
+		h = h->next;
+		count++;
 	}
 	return (count);
 }
