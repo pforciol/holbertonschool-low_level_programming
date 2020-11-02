@@ -4,7 +4,7 @@
  * delete_nodeint_at_index - deletes the node at a given position
  *
  * @head: the listint_t argument (head)
- * @idx: the index to delete the node
+ * @index: the index to delete the node
  *
  * Return: 1 if succeeded, -1 if failed
  */
