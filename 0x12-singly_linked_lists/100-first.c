@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 /**
- * first - function taht executes before main
+ * first - function executed before main
  */
 
 void __attribute__ ((constructor)) first()
