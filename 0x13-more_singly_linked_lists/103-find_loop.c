@@ -10,15 +10,18 @@
 
 listint_t	*find_listint_loop(listint_t *head)
 {
-	listint_t *curr = head, *tmp;
+	size_t count = 0;
+	listint_t *begin = head;
 
-	while (curr)
+	if (head)
 	{
-		tmp = curr;
-		curr = curr->next;
-
-		if (curr > tmp)
-			return (curr);
+		while (head && interval(begin, head, count))
+		{
+			head = head->next;
+			count++;
+		}
+		if (head)
+			return (head);
 	}
 	return (NULL);
 }
