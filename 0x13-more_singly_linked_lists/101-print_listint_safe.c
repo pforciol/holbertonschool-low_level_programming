@@ -7,12 +7,15 @@
  * @node: the current node
  * @i: the interval that should be at current position
  *
- * Return: 1 if interval is correct, 0 is there is a loop
+ * Return: 1 if interval is correct, 0 if there is a loop, or -1 if one is NULL
  */
 
 size_t	interval(const listint_t *begin, const listint_t *node, size_t i)
 {
 	size_t check = 0;
+
+	if (!begin || !node)
+		return (-1);
 
 	while (begin != node)
 	{
