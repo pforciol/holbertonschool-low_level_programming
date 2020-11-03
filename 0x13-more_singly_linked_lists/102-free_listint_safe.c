@@ -10,22 +10,30 @@
 
 size_t	free_listint_safe(listint_t **head)
 {
-	size_t count = 0;
-	listint_t *tmp;
+	size_t count = 0, i = 0;
+	listint_t *begin = *head, *tmp;
 
-	while (*head)
+	if (*head)
 	{
-		tmp = *head;
-		*head = (*head)->next;
-
-		count++;
-		if (*head > tmp)
+		while (*head && interval(begin, *head, count))
 		{
-			free(tmp);
-			break;
+			tmp = (*head)->next;
+			*head = tmp;
+
+			count++;
 		}
-		free(tmp);
+
+		*head = begin;
+		while (i < count)
+		{
+			tmp = (*head)->next;
+			free(*head);
+			*head = tmp;
+			i++;
+		}
+
+		if (*head)
+			*head = NULL;
 	}
-	(*head) = NULL;
 	return (count);
 }
