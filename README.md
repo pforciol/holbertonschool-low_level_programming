@@ -20,3 +20,5 @@ List of the Projects:
 * [0x10. C - Variadic functions](https://github.com/pforciol/holbertonschool-low_level_programming/tree/master/0x10-variadic_functions)
 * [0x11. C - printf](https://github.com/pforciol/printf)
 * [0x12. C - Singly linked lists](https://github.com/pforciol/holbertonschool-low_level_programming/tree/master/0x12-singly_linked_lists)
+* [0x13. C - More singly linked lists](https://github.com/pforciol/holbertonschool-low_level_programming/tree/master/0x13-more_singly_linked_lists)
+* [0x14. C - Bit manipulation](https://github.com/pforciol/holbertonschool-low_level_programming/tree/master/0x14-bit_manipulation)
