@@ -58,7 +58,7 @@ int		main(int ac, char **av)
 					close_o = close(fd_f);
 					if (close_o != 0)
 						handle_exit(100, av, fd_f);
-					return (1);
+					return (0);
 				}
 
 				if (write_o == -1)
