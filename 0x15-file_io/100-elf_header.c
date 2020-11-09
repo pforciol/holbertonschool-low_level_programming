@@ -8,7 +8,7 @@
 
 void	handle_exit(char *message)
 {
-	dprintf(STDERR_FILENO, "%s\n", message);
+	printf("%s\n", message);
 	exit(98);
 }
 
