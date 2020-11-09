@@ -144,11 +144,16 @@ void	display_elf_osabi(unsigned char osabi)
  * display_elf_type - display_elf_type
  *
  * @type: the type
+ * @be: if big endian 1, else 0
  */
 
-void	display_elf_type(uint16_t type)
+void	display_elf_type(uint16_t type, int be)
 {
 	printf("  %-35s", "Type:");
+
+	if (be == 1)
+		type = type >> 8;
+
 	if (type == ET_NONE)
 		printf("UNKNOWN (Unknown file)");
 	else if (type == ET_REL)
@@ -197,7 +202,8 @@ void	display_elf(Elf32_Ehdr *h)
 	display_elf_version(h->e_ident[EI_VERSION]);
 	display_elf_osabi(h->e_ident[EI_OSABI]);
 	printf("  %-35s%d\n", "ABI Version:", h->e_ident[EI_ABIVERSION]);
-	display_elf_type(h->e_type);
+	display_elf_type(h->e_type,
+			(h->e_ident[EI_DATA] == ELFDATA2MSB) ? 1 : 0);
 	display_elf_entry(h->e_entry,
 			(h->e_ident[EI_DATA] == ELFDATA2MSB) ? 1 : 0);
 }
