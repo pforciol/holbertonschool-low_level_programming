@@ -11,7 +11,7 @@
 void	handle_exit(int code, char **av, int fd)
 {
 	if (code == 97)
-		dprintf(STDERR_FILENO, "Usage: file_from file_to\n");
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 	else if (code == 98)
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]);
 	else if (code == 99)
@@ -53,14 +53,11 @@ int		main(int ac, char **av)
 				if (write_o == -1 || write_o != bytes)
 					handle_exit(99, av, 0);
 			}
-			if (bytes == 0)
-			{
-				if (close(fd_t) == -1)
-					handle_exit(100, av, fd_t);
-				if (close(fd_f) == -1)
-					handle_exit(100, av, fd_f);
-				return (0);
-			}
+			if (close(fd_t) == -1)
+				handle_exit(100, av, fd_t);
+			if (close(fd_f) == -1)
+				handle_exit(100, av, fd_f);
+			return (0);
 		}
 		handle_exit(99, av, 0);
 	}
