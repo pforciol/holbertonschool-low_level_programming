@@ -40,18 +40,18 @@ int		main(int ac, char **av)
 		handle_exit(97, av, 0);
 
 	fd_f = open(av[1], O_RDONLY);
-	if (fd_f != -1 && av[1])
+	if (fd_f > -1 && av[1])
 	{
 		fd_t = open(av[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
-		if (fd_t != -1 && av[2])
+		if (fd_t > -1 && av[2])
 		{
 			while ((bytes = read(fd_f, buf, 1024)) != 0)
 			{
-				if (bytes < 0)
-					break;
+				if (bytes == -1)
+					handle_exit(98, av, 0);
 				write_o = write(fd_t, buf, bytes);
 				if (write_o == -1)
-					break;
+					handle_exit(99, av, 0);
 			}
 			if (bytes == 0)
 			{
@@ -62,7 +62,7 @@ int		main(int ac, char **av)
 				return (0);
 			}
 		}
-		handle_exit((bytes == -1) ? 98 : 99, av, 0);
+		handle_exit(99, av, 0);
 	}
 	handle_exit(98, av, 0);
 	return (0);
