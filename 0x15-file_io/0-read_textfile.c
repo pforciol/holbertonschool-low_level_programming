@@ -27,8 +27,8 @@ ssize_t	read_textfile(const char *filename, size_t letters)
 				write_o = write(STDOUT_FILENO, buf, bytes);
 				close(fd);
 				free(buf);
-				if (write_o == bytes && write_o > -1)
-					return (bytes ? bytes : (ssize_t)letters);
+				if (write_o > -1)
+					return (bytes);
 			}
 			free(buf);
 		}
