@@ -102,7 +102,7 @@ void	display_elf_version(unsigned char version)
 	else if (version == EV_CURRENT)
 		printf("%d (current)", version);
 	else
-		printf("<unknown: %x>", version);
+		printf("%d", version);
 	printf("\n");
 }
 
