@@ -13,7 +13,7 @@
 ssize_t	read_textfile(const char *filename, size_t letters)
 {
 	int fd = open(filename, O_RDONLY);
-	ssize_t bytes = 0, write_o = 0;
+	ssize_t bytes = 0, write_o = -1;
 	char *buf = NULL;
 
 	if (fd > -1 && letters > 0 && filename)
@@ -23,14 +23,11 @@ ssize_t	read_textfile(const char *filename, size_t letters)
 		{
 			bytes = read(fd, buf, letters);
 			if (bytes > -1)
-			{
 				write_o = write(STDOUT_FILENO, buf, bytes);
-				close(fd);
-				free(buf);
-				if (write_o > -1)
-					return (bytes);
-			}
 			free(buf);
+			close(fd);
+			if (write_o > -1)
+				return (bytes);
 		}
 	}
 	return (0);
