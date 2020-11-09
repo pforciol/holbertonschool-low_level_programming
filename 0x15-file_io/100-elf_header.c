@@ -8,7 +8,7 @@
 
 void	handle_exit(char *message)
 {
-	printf("%s\n", message);
+	dprintf(STDERR_FILENO, "%s\n", message);
 	exit(98);
 }
 
@@ -18,7 +18,7 @@ void	handle_exit(char *message)
  * @h: the header structure
  */
 
-void	is_elf_file(Elf64_Ehdr *h)
+void	is_elf_file(Elf32_Ehdr *h)
 {
 	if (h->e_ident[EI_MAG0] == ELFMAG0			/* 0x7f */
 			&& h->e_ident[EI_MAG1] == ELFMAG1	/* 'E'  */
@@ -34,7 +34,7 @@ void	is_elf_file(Elf64_Ehdr *h)
  * @h: the header structure
  */
 
-void	display_elf_magic(Elf64_Ehdr *h)
+void	display_elf_magic(Elf32_Ehdr *h)
 {
 	int i = 0;
 
@@ -166,7 +166,7 @@ void	display_elf_type(uint16_t type)
  * @h: the header structure
  */
 
-void	display_elf(Elf64_Ehdr *h)
+void	display_elf(Elf32_Ehdr *h)
 {
 	is_elf_file(h);
 	printf("ELF Header:\n");
@@ -177,7 +177,7 @@ void	display_elf(Elf64_Ehdr *h)
 	display_elf_osabi(h->e_ident[EI_OSABI]);
 	printf("  %-35s%d\n", "ABI Version:", h->e_ident[EI_ABIVERSION]);
 	display_elf_type(h->e_type);
-	printf("  %-35s%#lx\n", "Entry point address:", h->e_entry);
+	printf("  %-35s%#x\n", "Entry point address:", h->e_entry);
 }
 
 /**
@@ -191,20 +191,20 @@ void	display_elf(Elf64_Ehdr *h)
 
 int		main(int ac, char **av)
 {
-	Elf64_Ehdr *header;
+	Elf32_Ehdr *header;
 	int fd = 0;
 	ssize_t bytes = 0;
 
 	if (ac != 2)
 		handle_exit("Usage: elf_header elf_filename");
 
-	header = malloc(sizeof(Elf64_Ehdr));
+	header = malloc(sizeof(Elf32_Ehdr));
 	fd = open(av[1], O_RDONLY);
 	if (header && fd > -1)
 	{
 		if (lseek(fd, 0, SEEK_SET) != 0)
 			handle_exit("Error: Can't find the header of the requested file");
-		bytes = read(fd, header, sizeof(Elf64_Ehdr));
+		bytes = read(fd, header, sizeof(Elf32_Ehdr));
 		if (bytes == -1)
 			handle_exit("Error: Can't read the header of the requested file");
 		display_elf(header);
