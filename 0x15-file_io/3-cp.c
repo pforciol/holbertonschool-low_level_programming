@@ -53,14 +53,12 @@ int		main(int ac, char **av)
 				if (write_o == -1)
 					break;
 			}
-			if (bytes == 0 && write_o >= 0)
-			{
-				if (close(fd_t) != 0)
-					handle_exit(100, av, fd_t);
-				if (close(fd_f) != 0)
-					handle_exit(100, av, fd_f);
+			if (close(fd_t) != 0)
+				handle_exit(100, av, fd_t);
+			if (close(fd_f) != 0)
+				handle_exit(100, av, fd_f);
+			if (bytes == 0)
 				return (0);
-			}
 		}
 		if (close(fd_f) != 0)
 			handle_exit(100, av, fd_f);
