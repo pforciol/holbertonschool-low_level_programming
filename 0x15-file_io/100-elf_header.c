@@ -40,7 +40,11 @@ void	display_elf_magic(Elf32_Ehdr *h)
 
 	printf("  %s", "Magic:   ");
 	while (i < EI_NIDENT)
-		printf("%02x ", h->e_ident[i++]);
+	{
+		if (i != 0)
+			printf(" ");
+		printf("%02x", h->e_ident[i++]);
+	}
 	printf("\n");
 }
 
@@ -161,6 +165,23 @@ void	display_elf_type(uint16_t type)
 }
 
 /**
+ * display_elf_entry - display_elf_entry
+ *
+ * @addr: the address of the entry point
+ * @be: big endian (1 if yes, 0 else)
+ */
+
+void	display_elf_entry(Elf64_Addr addr, int be)
+{
+	if (be == 1)
+		addr = ((addr >> 24) & 0x000000ff)
+		| ((addr >> 8) & 0x0000ff00)
+		| ((addr << 8) & 0x00ff0000)
+		| ((addr << 24) & 0xff000000);
+	printf("  %-35s%#lx\n", "Entry point address:", addr);
+}
+
+/**
  * display_elf - display_elf
  *
  * @h: the header structure
@@ -177,7 +198,8 @@ void	display_elf(Elf32_Ehdr *h)
 	display_elf_osabi(h->e_ident[EI_OSABI]);
 	printf("  %-35s%d\n", "ABI Version:", h->e_ident[EI_ABIVERSION]);
 	display_elf_type(h->e_type);
-	printf("  %-35s%#x\n", "Entry point address:", h->e_entry);
+	display_elf_entry(h->e_entry,
+			(h->e_ident[EI_DATA] == ELFDATA2MSB) ? 1 : 0);
 }
 
 /**
