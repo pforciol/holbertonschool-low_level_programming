@@ -50,14 +50,14 @@ int		main(int ac, char **av)
 				if (bytes == -1)
 					handle_exit(98, av, 0);
 				write_o = write(fd_t, buf, bytes);
-				if (write_o == -1)
+				if (write_o == -1 || write_o != bytes)
 					handle_exit(99, av, 0);
 			}
 			if (bytes == 0)
 			{
-				if (close(fd_t) != 0)
+				if (close(fd_t) == -1)
 					handle_exit(100, av, fd_t);
-				if (close(fd_f) != 0)
+				if (close(fd_f) == -1)
 					handle_exit(100, av, fd_f);
 				return (0);
 			}
