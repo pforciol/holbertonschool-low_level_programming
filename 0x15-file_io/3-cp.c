@@ -11,13 +11,13 @@
 void	handle_exit(int code, char **av, int fd)
 {
 	if (code == 97)
-		dprintf(STDOUT_FILENO, "Usage: file_from file_to\n");
+		dprintf(STDERR_FILENO, "Usage: file_from file_to\n");
 	else if (code == 98)
-		dprintf(STDOUT_FILENO, "Error: Can't read from file %s\n", av[1]);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]);
 	else if (code == 99)
-		dprintf(STDOUT_FILENO, "Error: Can't write to %s\n", av[2]);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]);
 	else if (code == 100)
-		dprintf(STDOUT_FILENO, "Error: Can't close fd %d\n", fd);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
 	exit(code);
 }
 
