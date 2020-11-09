@@ -33,7 +33,7 @@ void	handle_exit(int code, char **av, int fd)
 int		main(int ac, char **av)
 {
 	char buf[1024];
-	int fd_f = 0, fd_t = 0, close_o = 0;
+	int fd_f = 0, fd_t = 0;
 	ssize_t bytes = 0, write_o = 0;
 
 	if (ac != 3)
@@ -45,31 +45,27 @@ int		main(int ac, char **av)
 		fd_t = open(av[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
 		if (fd_t > -1 && av[2])
 		{
-			while (1)
+			while ((bytes = read(fd_f, buf, 1024)) != 0)
 			{
-				bytes = read(fd_f, buf, 1024);
-				if (bytes > 0)
-					write_o = write(fd_t, buf, bytes);
-				else if (bytes == 0)
-				{
-					close_o = close(fd_t);
-					if (close_o != 0)
-						handle_exit(100, av, fd_t);
-					close_o = close(fd_f);
-					if (close_o != 0)
-						handle_exit(100, av, fd_f);
-					return (0);
-				}
-
+				if (bytes < 0)
+					break;
+				write_o = write(fd_t, buf, bytes);
 				if (write_o == -1)
 					break;
 			}
+			if (bytes == 0)
+			{
+				if (close(fd_t) != 0)
+					handle_exit(100, av, fd_t);
+				if (close(fd_f) != 0)
+					handle_exit(100, av, fd_f);
+				return (0);
+			}
 		}
-		close_o = close(fd_f);
-		if (close_o != 0)
+		if (close(fd_f) != 0)
 			handle_exit(100, av, fd_f);
-		handle_exit(99, av, 0);
+		handle_exit((bytes == -1) ? 98 : 99, av, 0);
 	}
 	handle_exit(98, av, 0);
-	return (-1);
+	return (0);
 }
