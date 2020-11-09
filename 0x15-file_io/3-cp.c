@@ -65,7 +65,9 @@ int		main(int ac, char **av)
 					break;
 			}
 		}
-		close(fd_f);
+		close_o = close(fd_f);
+		if (close_o != 0)
+			handle_exit(100, av, fd_f);
 		handle_exit(99, av, 0);
 	}
 	handle_exit(98, av, 0);
