@@ -204,7 +204,7 @@ int		main(int ac, char **av)
 	{
 		if (lseek(fd, 0, SEEK_SET) != 0)
 			handle_exit("Error: Can't find the header of the requested file");
-		bytes = read(fd, header, sizeof(header));
+		bytes = read(fd, header, sizeof(Elf64_Ehdr));
 		if (bytes == -1)
 			handle_exit("Error: Can't read the header of the requested file");
 		display_elf(header);
