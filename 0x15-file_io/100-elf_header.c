@@ -208,7 +208,8 @@ int		main(int ac, char **av)
 		if (bytes == -1)
 			handle_exit("Error: Can't read the header of the requested file");
 		display_elf(header);
-		close(fd);
+		if (close(fd) != 0)
+			handle_exit("Error: Can't close the current file directory");
 		free(header);
 		return (0);
 	}
