@@ -16,12 +16,13 @@ ssize_t	read_textfile(const char *filename, size_t letters)
 	ssize_t bytes = 0, write_o = -1;
 	char *buf = NULL;
 
-	if (fd > -1 && letters > 0 && filename)
+	if (fd > -1 && filename)
 	{
-		buf = malloc(sizeof(char) * letters);
+		buf = malloc(sizeof(char) * (letters + 1));
 		if (buf)
 		{
 			bytes = read(fd, buf, letters);
+			buf[bytes] = '\0';
 			if (bytes > -1)
 				write_o = write(STDOUT_FILENO, buf, bytes);
 			free(buf);
