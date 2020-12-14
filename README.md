@@ -23,3 +23,6 @@ List of the Projects:
 * [0x13. C - More singly linked lists](https://github.com/pforciol/holbertonschool-low_level_programming/tree/master/0x13-more_singly_linked_lists)
 * [0x14. C - Bit manipulation](https://github.com/pforciol/holbertonschool-low_level_programming/tree/master/0x14-bit_manipulation)
 * [0x15. C - File I/O](https://github.com/pforciol/holbertonschool-low_level_programming/tree/master/0x15-file_io)
+* [0x16. C - Simple Shell](https://github.com/pforciol/simple_shell)
+* [0x17. C - Doubly linked lists](https://github.com/pforciol/holbertonschool-low_level_programming/tree/master/0x17-doubly_linked_lists)
+* [0x18. C - Dynamic libraries](https://github.com/pforciol/holbertonschool-low_level_programming/tree/master/0x18-dynamic_libraries)
