@@ -57,6 +57,7 @@ void insert_node(shash_table_t *ht, shash_node_t *new_node)
 	else if (strcmp(new_node->key, ht->shead->key) <= 0) /* if is <= first */
 	{
 		new_node->snext = ht->shead;
+		new_node->snext->sprev = new_node;
 		ht->shead = new_node;
 	}
 	else
@@ -70,6 +71,8 @@ void insert_node(shash_table_t *ht, shash_node_t *new_node)
 		head->snext = new_node;
 		if (!tmp_node)
 			ht->stail = new_node;
+		else
+			tmp_node->sprev = new_node;
 	}
 }
 
@@ -147,7 +150,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 
 	if (!tmp_node)
 	{
-		new_node = hash_table_add(ht, index, key, new_value);
+		new_node = shash_table_add(ht, key, new_value);
 		if (!new_node)
 			return (0);
 		new_node->next = ht->array[index];
@@ -248,14 +251,14 @@ void shash_table_print_rev(const shash_table_t *ht)
 }
 
 /**
- * hash_table_delete - deletes a hash table
+ * shash_table_delete - deletes a hash table
  *
  * @ht: the hash table to delete
  */
 
-void hash_table_delete(const hash_table_t *ht)
+void shash_table_delete(shash_table_t *ht)
 {
-	hash_node_t *tmp_node = NULL;
+	shash_node_t *tmp_node = NULL;
 	unsigned long int index = 0;
 
 	if (ht)

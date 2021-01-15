@@ -6,7 +6,7 @@
  * @ht: the hash table to delete
  */
 
-void hash_table_delete(const hash_table_t *ht)
+void hash_table_delete(hash_table_t *ht)
 {
 	hash_node_t *tmp_node = NULL;
 	unsigned long int index = 0;
