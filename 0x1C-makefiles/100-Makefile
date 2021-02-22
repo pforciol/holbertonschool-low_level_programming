@@ -6,7 +6,7 @@ CFLAGS = -Wall -Werror -Wextra -pedantic
 OBJ = $(SRC:.c=.o)
 SRC = main.c holberton.c
 
-all: $(OBJ)
+all: m.h $(OBJ)
 	$(CC) $(OBJ) -o $(NAME)
 
 clean:
