@@ -30,3 +30,5 @@ List of the Projects:
 * [0x1A. C - Hash tables](https://github.com/pforciol/holbertonschool-low_level_programming/tree/master/0x1A-hash_tables)
 * [0x1B. C - Sorting algorithms & Big O](https://github.com/pforciol/sorting_algorithms)
 * [0x1C. C - Makefiles](https://github.com/pforciol/holbertonschool-low_level_programming/tree/master/0x1C-makefiles)
+* [0x1D. C - Binary Trees](https://github.com/pforciol/binary_trees)
+* [0x1E. C - Search Algorithms](https://github.com/pforciol/holbertonschool-low_level_programming/tree/master/0x1E-search_algorithms)
