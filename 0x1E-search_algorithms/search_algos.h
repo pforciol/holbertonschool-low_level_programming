@@ -5,6 +5,16 @@
 #include <stdio.h>
 #include <math.h>
 
+/* MANDATORY */
+int linear_search(int *array, size_t size, int value);
+int binary_search(int *array, size_t size, int value);
+
+/* ADVANCED */
+int jump_search(int *array, size_t size, int value);
+int interpolation_search(int *array, size_t size, int value);
+int exponential_search(int *array, size_t size, int value);
+int advanced_binary(int *array, size_t size, int value);
+
 /**
  * struct listint_s - singly linked list
  *
@@ -23,15 +33,6 @@ typedef struct listint_s
 	struct listint_s *next;
 } listint_t;
 
-/* MANDATORY */
-int linear_search(int *array, size_t size, int value);
-int binary_search(int *array, size_t size, int value);
-
-/* ADVANCED */
-int jump_search(int *array, size_t size, int value);
-int interpolation_search(int *array, size_t size, int value);
-int exponential_search(int *array, size_t size, int value);
-int advanced_binary(int *array, size_t size, int value);
 listint_t *jump_list(listint_t *list, size_t size, int value);
 
 /**

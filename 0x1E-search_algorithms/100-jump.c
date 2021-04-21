@@ -13,7 +13,6 @@
 int jump_search(int *array, size_t size, int value)
 {
 	size_t i = 0, m = 0;
-	(void)value;
 
 	if (array)
 	{
